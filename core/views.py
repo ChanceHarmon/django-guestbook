@@ -3,11 +3,20 @@ from django.http import HttpResponse, JsonResponse
 from .models import VisitorEntry
 # Create your views here.
 
+
+# Basic first test
 def accept_req(request):
     req_message = request.GET.get('message', 'default')
     # return HttpResponse(f"You said: {req_message}")
     return JsonResponse({"message": req_message})
 
+# Render Homepage
+def render_homepage(request):
+    return render(request, "core/guestbook.html")
+
+
+
+# Get and Post visitors
 def list_visitors(request):
     if request.method == "POST":
         name = request.POST.get("name", "test name")
