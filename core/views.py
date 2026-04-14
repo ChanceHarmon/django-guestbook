@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .models import VisitorEntry
+from .forms import VisitorEntryForm
 # Create your views here.
 
 
@@ -12,7 +13,8 @@ def accept_req(request):
 
 # Render Homepage
 def render_homepage(request):
-    return render(request, "core/guestbook.html")
+    form = VisitorEntryForm()
+    return render(request, "core/guestbook.html", {"form": form})
 
 
 
