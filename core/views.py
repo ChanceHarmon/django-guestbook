@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from .models import VisitorEntry
 from .forms import VisitorEntryForm
@@ -13,8 +13,22 @@ def accept_req(request):
 
 # Render Homepage
 def render_homepage(request):
-    form = VisitorEntryForm()
-    return render(request, "core/guestbook.html", {"form": form})
+    if request.method == "POST":
+        form = VisitorEntryForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect("/guestbook/")
+
+    else:
+        form = VisitorEntryForm()
+
+    entries = VisitorEntry.objects.order_by("-created_at")
+
+    return render(request, "core/guestbook.html", {
+        "form": form,
+        "entries": entries,
+    })
 
 
 
