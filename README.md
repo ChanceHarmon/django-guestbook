@@ -22,7 +22,8 @@ A simple guestbook web application built with Django to practice core backend an
 
 Clone the repository:
 
-git clone `https://github.com/ChanceHarmon/django-guestbook.git` 
+git clone `https://github.com/ChanceHarmon/django-guestbook.git`
+ 
 cd `django-guestbook`  
 
 Create a virtual environment:
