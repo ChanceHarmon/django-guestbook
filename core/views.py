@@ -1,16 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.contrib import messages
 from .models import VisitorEntry
 from .forms import VisitorEntryForm
 # Create your views here.
-
-
-# Basic first test
-def accept_req(request):
-    req_message = request.GET.get('message', 'default')
-    # return HttpResponse(f"You said: {req_message}")
-    return JsonResponse({"message": req_message})
 
 # Render Homepage
 def render_homepage(request):

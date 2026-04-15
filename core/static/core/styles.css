@@ -150,6 +150,12 @@ button {
 
 .entries-section {
   margin-top: 24px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-top: 16px;
+  padding-right: 6px;
+  scrollbar-gutter: stable;
+  border-top: 1px solid var(--border-soft);
 }
 
 .entry-card {
