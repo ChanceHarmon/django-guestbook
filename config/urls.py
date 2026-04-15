@@ -21,5 +21,5 @@ from core.views import render_homepage
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('core.urls')),
-    path('guestbook/', render_homepage)
+    path('', render_homepage, name="guestbook")
 ]

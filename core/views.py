@@ -13,7 +13,7 @@ def render_homepage(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Entry added to the guestbook!")
-            return redirect("/guestbook/")
+            return redirect("guestbook")
 
     else:
         form = VisitorEntryForm()
@@ -46,4 +46,4 @@ def delete_entry(request, entry_id):
     if request.method == "POST":
         entry = VisitorEntry.objects.get(id=entry_id)
         entry.delete()
-    return redirect("/guestbook/")
+    return redirect("guestbook")

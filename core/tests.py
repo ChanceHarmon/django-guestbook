@@ -5,11 +5,11 @@ from .models import VisitorEntry
 
 class GuestbookViewTests(TestCase):
     def test_guestbook_page_loads(self):
-        response = self.client.get("/guestbook/")
+        response = self.client.get(reverse("guestbook"))
         self.assertEqual(response.status_code, 200)
 
     def test_valid_post_creates_entry(self):
-        response = self.client.post("/guestbook/", {
+        response = self.client.post("/", {
             "name": "Chance",
             "message": "Testing the guestbook."
         })
@@ -21,7 +21,7 @@ class GuestbookViewTests(TestCase):
         self.assertEqual(entry.message, "Testing the guestbook.")
 
     def test_invalid_post_does_not_create_entry(self):
-        response = self.client.post("/guestbook/", {
+        response = self.client.post(reverse("guestbook"), {
             "name": "",
             "message": ""
         })
