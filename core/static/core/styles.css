@@ -1,29 +1,81 @@
+:root {
+  --font-body: Arial, sans-serif;
+
+  --bg-start: #f6f1e8;
+  --bg-mid: #eef3ea;
+  --bg-end: #e3ebe3;
+
+  --surface: #fffdfa;
+  --surface-alt: #f8f5ef;
+  --surface-soft: #f4f7f1;
+
+  --border: #d9d2c6;
+  --border-soft: #e6dfd4;
+  --border-strong: #c9bfaf;
+
+  --text-main: #3f3a34;
+  --text-heading: #4a443c;
+  --text-muted: #7a746b;
+
+  --input-bg: #fffdfa;
+  --input-border: #cfc5b8;
+  --input-focus: #8ea17f;
+  --input-focus-shadow: rgba(142, 161, 127, 0.18);
+
+  --button-bg: #7f9472;
+  --button-border: #6f8463;
+  --button-text: #ffffff;
+  --button-hover: #6f8463;
+
+  --message-bg: #edf4e8;
+  --message-border: #cdddc2;
+  --message-text: #4e6644;
+
+  --error-bg: #fdf1ec;
+  --error-border: #e6c6ba;
+  --error-text: #8b4f3f;
+
+  --delete-text: #8f5348;
+  --delete-border: #ddb8ae;
+  --delete-bg-hover: #f9ece8;
+  --delete-border-hover: #cfa094;
+  --delete-text-hover: #744136;
+
+  --shadow: 0 10px 24px rgba(69, 57, 43, 0.08);
+  --shadow-hover: 0 6px 14px rgba(69, 57, 43, 0.08);
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-
-  font-family: Arial, sans-serif;
-  color: #222;
-
-  background: linear-gradient(180deg, #f8f4ef 0%, #e8edf5 50%, #d6e0ee 100%);
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background: linear-gradient(180deg,
+      var(--bg-start) 0%,
+      var(--bg-mid) 50%,
+      var(--bg-end) 100%);
 }
 
 .page {
   max-width: 700px;
   margin: 40px auto;
   padding: 24px;
-  background: #ffffff;
-  border: 1px solid #d7e0ea;
-  border-radius: 8px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
 }
 
 h1,
 h2,
 h3 {
   margin-top: 0;
-  color: #2f435d;
+  color: var(--text-heading);
 }
 
 .guestbook-form {
@@ -38,6 +90,7 @@ h3 {
   display: block;
   margin-bottom: 6px;
   font-weight: bold;
+  color: var(--text-heading);
 }
 
 .form-group input,
@@ -46,15 +99,17 @@ h3 {
   box-sizing: border-box;
   padding: 10px;
   font: inherit;
-  border: 1px solid #bcc9d6;
-  border-radius: 4px;
+  color: var(--text-main);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #6f8fb3;
-  box-shadow: 0 0 0 3px rgba(111, 143, 179, 0.15);
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px var(--input-focus-shadow);
 }
 
 .form-group textarea {
@@ -69,23 +124,23 @@ button {
 }
 
 .guestbook-form button[type="submit"] {
-  background: #55779f;
-  color: #fff;
-  border: 1px solid #4b6a8f;
-  border-radius: 4px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--button-border);
+  border-radius: var(--radius-sm);
 }
 
 .guestbook-form button[type="submit"]:hover {
-  background: #49688b;
+  background: var(--button-hover);
 }
 
 .error-list {
   margin-top: 6px;
-  color: #9f1239;
-  background: #fff1f2;
-  border: 1px solid #f3c7cf;
+  color: var(--error-text);
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
   padding: 6px 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .error-list ul {
@@ -101,20 +156,17 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 16px;
   margin-bottom: 16px;
-
-  border: 1px solid #dce5ef;
-  border-radius: 6px;
-  background: #f9fbfd;
-
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .entry-card:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-hover);
 }
 
 .entry-content {
@@ -136,7 +188,7 @@ button {
 .entry-card small {
   display: block;
   margin-top: 8px;
-  color: #708198;
+  color: var(--text-muted);
 }
 
 .entry-actions {
@@ -147,33 +199,29 @@ button {
 .message {
   padding: 10px;
   margin-bottom: 16px;
-  background: #eaf3ff;
-  border: 1px solid #c7d9ef;
-  border-radius: 4px;
-  color: #2f4e72
+  background: var(--message-bg);
+  border: 1px solid var(--message-border);
+  border-radius: var(--radius-sm);
+  color: var(--message-text);
 }
 
 .delete-btn {
   align-self: flex-start;
-
   padding: 6px 12px;
   font-size: 0.85rem;
   font-weight: 500;
-
   background: transparent;
-  color: #b00020;
-
-  border: 1px solid #f5c2c7;
-  border-radius: 4px;
-
+  color: var(--delete-text);
+  border: 1px solid var(--delete-border);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .delete-btn:hover {
-  background: #ffe5e5;
-  border-color: #f1aeb5;
-  color: #8a0018;
+  background: var(--delete-bg-hover);
+  border-color: var(--delete-border-hover);
+  color: var(--delete-text-hover);
 }
 
 .delete-btn:active {
