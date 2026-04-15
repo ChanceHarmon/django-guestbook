@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
+from django.contrib import messages
 from .models import VisitorEntry
 from .forms import VisitorEntryForm
 # Create your views here.
@@ -18,6 +19,7 @@ def render_homepage(request):
 
         if form.is_valid():
             form.save()
+            messages.success(request, "Entry added to the guestbook!")
             return redirect("/guestbook/")
 
     else:
@@ -44,3 +46,11 @@ def list_visitors(request):
         entries = VisitorEntry.objects.all()
         entry_info = [{"name": entry.name, "message": entry.message} for entry in entries]
         return JsonResponse(entry_info, safe=False)
+
+
+# Delete entry
+def delete_entry(request, entry_id):
+    if request.method == "POST":
+        entry = VisitorEntry.objects.get(id=entry_id)
+        entry.delete()
+    return redirect("/guestbook/")
